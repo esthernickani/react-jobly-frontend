@@ -24,7 +24,6 @@ class JoblyApi {
     const params = (method === "get")
         ? data
         : {};
-    console.log('url->',url,'method->', method,'data->', data,'params->', params,'headers->', headers)
 
     try {
       return (await axios({ url, method, data, params, headers })).data;
@@ -46,7 +45,6 @@ class JoblyApi {
 
   //Get all companies in database
   static async getCompanies(filter) {
-    console.log(filter)
     let res = await this.request(`companies`, {name: filter});
     return res.companies;
   }
@@ -54,7 +52,6 @@ class JoblyApi {
   //Get all jobs in database
   static async getJobs(filter) {
     let res = await this.request(`jobs`, {title: filter});
-    console.log(res.jobs)
     return res.jobs;
   }
 
@@ -73,7 +70,6 @@ class JoblyApi {
   //get current user
   static async getUser(user = 'testuser') {
     let res = await this.request(`users/${user}`)
-    console.log(res)
     return res;
   }
 

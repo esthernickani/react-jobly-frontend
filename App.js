@@ -20,12 +20,10 @@ function App() {
     JoblyApi.token = userToken
     setToken(userToken)
     localStorage.setItem('token', userToken)
-    console.log(userToken)
   }
 
   //function to login user and add token to state, if error, go to form page again and show e
   async function loginUser ({ username, password }) {
-    console.log(username)
     try {
       let response = await JoblyApi.loginUser(username, password)
       addToken(response.token);
@@ -65,7 +63,6 @@ function App() {
   async function applyJob(username, id) {
     try {
       let response = await JoblyApi.applyForJob(username, id)
-      console.log(response)
     } catch (error) {
       console.log(error)
     }
@@ -75,18 +72,14 @@ function App() {
   useEffect(() => {
     //check if token is in local storage and add to state and api helper
     const tokenInLocalStorage = localStorage.getItem('token')
-    console.log(tokenInLocalStorage)
     let currentToken = tokenInLocalStorage || null
     setToken(currentToken)
-    //console.log(token)
 
     if (token) {
       JoblyApi.token = currentToken
       let decodedUser = jwtDecode(token)
-      console.log(decodedUser)
 
       async function getUserDetail () {
-        //console.log(decodedUser.username)
         let userDetail = await JoblyApi.getUser(decodedUser.username)
         setCurrentUser(userDetail.user)
       }

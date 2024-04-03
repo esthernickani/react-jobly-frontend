@@ -27,7 +27,6 @@ const Profile = () => {
         e.preventDefault();
         try {
             let response = await updateUser(formData)
-            console.log(response)
             if (!response.success) {
                 setError(response.error)
             }

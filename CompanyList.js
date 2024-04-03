@@ -32,7 +32,6 @@ const CompanyList = () => {
     const handleSubmit = e => {
         e.preventDefault();
         setFilter(searchInput)
-        console.log(filter)
         setSearchInput('')
     }
 

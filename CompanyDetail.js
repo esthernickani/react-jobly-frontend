@@ -12,14 +12,11 @@ const CompanyDetail = () => {
     useEffect(() => {
         async function getCompany(handle) {
             let companyDb = await JoblyApi.getCompany(handle)
-            console.log(companyDb)
             setCompany(companyDb)
-            console.log(company)
         }
         getCompany(handle)
     }, [])
 
-    //console.log(job)
 
    return (<>
                 {company &&
